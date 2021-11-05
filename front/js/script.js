@@ -16,17 +16,21 @@ function displayProducts() {
         });
 }
 
-function createElements(object) {
+/**
+ *
+ * @param {*} object
+ * Uses param object's data to create html elements and add them to the DOM
+ */
 
+function createElements(object) {
     //Declaring variables
     let link = document.createElement("a");
     let article = document.createElement("article");
     let image = document.createElement("img");
     let productName = document.createElement("h3");
     let productDescription = document.createElement("p");
-    
+
     //Setting attributes, classes and text
-    console.log(object);
     link.setAttribute("href", "./product.html?id=" + object._id);
     image.setAttribute("src", object.imageUrl);
     image.setAttribute("alt", object.altTxt);
@@ -41,9 +45,6 @@ function createElements(object) {
     article.appendChild(image);
     article.appendChild(productName);
     article.appendChild(productDescription);
-    
-
-    console.log(sectionItems);
 }
 
 displayProducts();
