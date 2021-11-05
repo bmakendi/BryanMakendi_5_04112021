@@ -1,5 +1,8 @@
 const sectionItems = document.getElementById("items");
 
+/**
+ * Fetches objects from url then uses functions to add them to the DOM
+ */
 function displayProducts() {
     fetch("http://localhost:3000/api/products")
         .then(response => {
