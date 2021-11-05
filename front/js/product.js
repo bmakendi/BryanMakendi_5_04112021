@@ -18,10 +18,9 @@ fetch("http://localhost:3000/api/products/" + id)
         console.log("Erreur: " + err);
     });
 
-
 /**
- * 
- * @param {*} colorsArray 
+ *
+ * @param {*} colorsArray
  * Uses array colorsArray to have html option elements of each color
  */
 function setUpOptions(colorsArray) {
@@ -35,8 +34,8 @@ function setUpOptions(colorsArray) {
 }
 
 /**
- * 
- * @param {*} data 
+ *
+ * @param {*} data
  * Uses properties from the data object to add elements to the DOM
  */
 
@@ -49,3 +48,29 @@ function typesData(data) {
     document.getElementById("price").innerText = data.price;
     document.getElementById("description").innerText = data.description;
 }
+
+//Adding elements to the cart
+
+let cart = [];
+let color = "";
+let quantity = 0;
+
+document.getElementById("quantity").addEventListener("change", (e) => {
+    quantity = e.target.value;
+});
+
+document.getElementById("colors").addEventListener("change", (e) => {
+    color = e.target.value;
+})
+
+document.getElementById("addToCart").addEventListener("click", (e) => {
+    console.log(quantity + " canapé(s) de couleur " + color);
+    let obj = {
+        id: id,
+        quantities: quantity,
+        color: color
+    };
+    JSON.stringify(obj);
+    localStorage.setItem(id, obj);
+    console.log(localStorage);
+});
