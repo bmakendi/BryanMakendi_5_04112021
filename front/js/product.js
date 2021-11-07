@@ -2,6 +2,7 @@ const url = new URL(window.location.href);
 let id = "";
 let productName = "";
 let imgUrl = "";
+let altTxt = "";
 let price = 0;
 
 if (url.searchParams.has("id")) {
@@ -17,6 +18,7 @@ fetch("http://localhost:3000/api/products/" + id)
         price = data.price;
         imgUrl = data.imageUrl;
         productName = data.name;
+        altTxt = data.altTxt;
         typesData(data);
         setUpOptions(data.colors);
     })
@@ -87,6 +89,7 @@ function addItem(id, quantity, color) {
         quantity: quantity,
         price: price, 
         imgUrl: imgUrl, 
+        altTxt: altTxt,
         name: productName
     };
     let duplicate;
