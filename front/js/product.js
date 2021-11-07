@@ -85,6 +85,9 @@ function addItem(id, quantity, color) {
         _id: id,
         color: color,
         quantity: quantity,
+        price: price, 
+        imgUrl: imgUrl, 
+        name: productName
     };
     let duplicate;
     if (localStorage.getItem("cart") != null)
