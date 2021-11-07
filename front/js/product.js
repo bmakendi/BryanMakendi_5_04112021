@@ -1,5 +1,8 @@
 const url = new URL(window.location.href);
 let id = "";
+let productName = "";
+let imgUrl = "";
+let price = 0;
 
 if (url.searchParams.has("id")) {
     id = url.searchParams.get("id");
@@ -51,26 +54,41 @@ function typesData(data) {
 
 //Adding elements to the cart
 
-let cart = [];
 let color = "";
 let quantity = 0;
-
-document.getElementById("quantity").addEventListener("change", (e) => {
-    quantity = e.target.value;
-});
-
-document.getElementById("colors").addEventListener("change", (e) => {
-    color = e.target.value;
-})
+let cart = [];
+let product = {};
 
 document.getElementById("addToCart").addEventListener("click", (e) => {
-    console.log(quantity + " canapé(s) de couleur " + color);
-    let obj = {
-        id: id,
-        quantities: quantity,
-        color: color
-    };
-    JSON.stringify(obj);
-    localStorage.setItem(id, obj);
+    quantity = document.getElementById("quantity").value;
+    color = document.getElementById("colors").value;
+    if ((quantity > 0 && quantity <= 100) && color != "") 
+        addItem(id, quantity, color);
     console.log(localStorage);
 });
+
+function addItem(id, quantity, color) {
+    let product = {
+        _id: id,
+        color: color,
+        quantity: quantity
+    };
+    if (localStorage.getItem("cart") != null)
+        cart = JSON.parse(localStorage.getItem("cart"));
+    if(sameProduct(product, cart)) {
+        cart.find((item) => {
+            item._id == product._id;
+        }).quantity += parseFloat(quantity);
+    } else
+        cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function sameProduct(product, cart) {
+    cart.find((item) => {
+        console.log(cart);
+        return (item._id == product._id) && (item.color == product.color);
+    })
+}
+
+
