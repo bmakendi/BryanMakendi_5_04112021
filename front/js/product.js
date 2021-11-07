@@ -56,7 +56,7 @@ function typesData(data) {
     document.getElementById("description").innerText = data.description;
 }
 
-//Adding elements to the cart
+///Adding elements to the cart///
 
 let color = "";
 let quantity = 0;
