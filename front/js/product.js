@@ -70,8 +70,10 @@ function buildCart() {
     document.getElementById("addToCart").addEventListener("click", e => {
         quantity = parseInt(document.getElementById("quantity").value);
         color = document.getElementById("colors").value;
-        if (quantity > 0 && quantity <= 100 && color != "")
+        if (quantity > 0 && quantity <= 100 && color != "") {
             addItem(id, quantity, color);
+            alert("Ajouté au panier !");
+        }
         console.log(localStorage);
     });
 }
