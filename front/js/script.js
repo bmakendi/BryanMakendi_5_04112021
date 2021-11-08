@@ -1,5 +1,3 @@
-const sectionItems = document.getElementById("items");
-
 /**
  * Fetches objects from url then uses functions to add them to the DOM
  */
@@ -20,13 +18,13 @@ function displayProducts() {
 }
 
 /**
- *
- * @param {*} object
- * Uses param object's data to create html elements and add them to the DOM
+ * Uses object's data to create html elements and add them to the DOM
+ * @param {object} object
  */
 
 function createElements(object) {
     //Declaring variables
+    const sectionItems = document.getElementById("items");
     let link = document.createElement("a");
     let article = document.createElement("article");
     let image = document.createElement("img");
