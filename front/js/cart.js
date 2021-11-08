@@ -7,6 +7,19 @@ let totalQty = 0;
 console.log(cart);
 
 /**
+ * Sorts the cart by its item's _id value.
+ */
+function sortCart() {
+    cart.sort((a, b) => {
+        if (a._id < b._id) 
+            return -1;
+        if (a._id > b._id) 
+            return 1;
+        return 0;
+    })
+}
+
+/**
  * Runs through the array and displays everything the cart contains including prices and quantities.
  * @param {array} cart An array containing the localStorage's item
  */
@@ -14,6 +27,7 @@ function displayCart(cart) {
     let totalQtySpan = document.getElementById("totalQuantity");
     let totalPriceSpan = document.getElementById("totalPrice");
     if (cart != null && cart.length > 0) {
+        sortCart();
         for (const item of cart) {
             addToDOM(item);
             totalQty += item.quantity;
